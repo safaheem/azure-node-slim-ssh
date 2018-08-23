@@ -1,5 +1,5 @@
 FROM node
-COPY info.php /etc/
+COPY resolv.conf /etc/resolv.conf
 COPY . src/
 WORKDIR /src
 RUN npm install
