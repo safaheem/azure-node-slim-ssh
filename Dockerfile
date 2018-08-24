@@ -3,4 +3,4 @@ COPY . /
 WORKDIR /
 RUN npm install
 EXPOSE 80
-ENTRYPOINT [ "init.sh" ]
+ENTRYPOINT [ "/init.sh" ]
