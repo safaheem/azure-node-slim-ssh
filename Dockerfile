@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node
 RUN mkdir /code
 WORKDIR /code
 ADD package.json /code/
@@ -7,15 +7,16 @@ ADD . /code/
 
 # ssh
 ENV SSH_PASSWD "root:Docker!"
-RUN apk update \
-        && apk add dialog && apk add --update bash \
-        && apk update \
-	&& apk add openssh-server \
+RUN apt-get update \
+        && apt-get install -y --no-install-recommends dialog \
+        && apt-get update \
+	&& apt-get install -y --no-install-recommends openssh-server \
 	&& echo "$SSH_PASSWD" | chpasswd 
 
 COPY sshd_config /etc/ssh/
 COPY init.sh /usr/local/bin/
 
 RUN chmod u+x /usr/local/bin/init.sh
-EXPOSE 8000 3000
+EXPOSE 2222 3000
+ENV PORT 3000
 ENTRYPOINT ["init.sh"]
