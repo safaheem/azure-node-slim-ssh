@@ -16,7 +16,6 @@ RUN apt-get update \
 COPY sshd_config /etc/ssh/
 COPY init.sh /usr/local/bin/
 
-#RUN chmod u+x /usr/local/bin/init.sh
 EXPOSE 2222 3000
 ENV PORT 3000
 ENTRYPOINT ["/usr/local/bin/init.sh"]
