@@ -1,4 +1,4 @@
-FROM node
+FROM node:8.9
 RUN mkdir /code
 WORKDIR /code
 ADD package.json /code/
@@ -8,14 +8,11 @@ ADD . /code/
 # ssh
 ENV SSH_PASSWD "root:Docker!"
 RUN apt-get update \
-        && apt-get install -y --no-install-recommends dialog \
-        && apt-get update \
-	&& apt-get install -y --no-install-recommends openssh-server \
+        && apt-get install -y --no-install-recommends apt-utils dialog openssh-server \
 	&& echo "$SSH_PASSWD" | chpasswd 
 
 COPY sshd_config /etc/ssh/
 COPY init.sh /usr/local/bin/
 
-EXPOSE 2222 3000
-ENV PORT 3000
+EXPOSE 3000 2222
 ENTRYPOINT ["/usr/local/bin/init.sh"]
