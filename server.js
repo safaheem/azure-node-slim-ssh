@@ -1,11 +1,12 @@
 var express = require('express');
+
 // Constants
-var PORT = process.env.PORT || 3000;
-var TEMP = process.env.TMP_PORTAL__CONNECT_URL;
+var PORT = process.env.PORT || 3001;
+
 // App
 var app = express();
 app.get('/', function (req, res) {
-  res.send('Hello World from NodeJS docker, printing variable: ' + TEMP + '\n');
+  res.send('Hello World from NodeJS '\n');
 });
 
 app.listen(PORT)
