@@ -14,5 +14,5 @@ RUN apt-get update \
 COPY sshd_config /etc/ssh/
 COPY init.sh /usr/local/bin/
 
-EXPOSE 3000 2222
+EXPOSE 3001 2222
 ENTRYPOINT ["/usr/local/bin/init.sh"]
