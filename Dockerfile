@@ -1,4 +1,4 @@
-FROM node:8.9
+FROM node:slim
 RUN mkdir /code
 WORKDIR /code
 ADD package.json /code/
